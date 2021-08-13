@@ -1,0 +1,4 @@
+*.pyc
+__pycache__/
+map.txt
+test.py
