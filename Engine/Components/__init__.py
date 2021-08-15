@@ -4,6 +4,7 @@ from Engine.Components.font import FONT
 from Engine.Components.gameobject import GAMEOBJECT
 from Engine.Components.image import IMAGE
 from Engine.Components.panel import PANEL
+from Engine.Components.spritesheet import SPRITESHEET
 from Engine.Components.text import TEXT
 from Engine.Components.tilemap import TILEMAP
 from Engine.Components.transform import TRANSFORM
