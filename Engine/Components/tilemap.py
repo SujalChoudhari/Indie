@@ -1,6 +1,6 @@
 from Engine.Components.image import IMAGE
 import pygame
-import Engine.Game.defaults as e
+from Engine.Game.run import game as e
 
 
 class TILEMAP(IMAGE):

@@ -1,7 +1,7 @@
 import pygame
 from Engine.Components.text import TEXT
 from Engine.Components.panel import PANEL
-import Engine.Game.defaults as e
+from Engine.Game.run import game as e
 
 class BUTTON(TEXT, PANEL):
 

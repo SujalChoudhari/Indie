@@ -1,6 +1,6 @@
 from Engine.Components.transform import TRANSFORM
 from Engine.Components.font import FONT
-import Engine.Game.defaults as e
+from Engine.Game.run import game as e
 
 class TEXT(TRANSFORM):
     def __init__(self, text, font: FONT, colour):

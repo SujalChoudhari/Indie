@@ -1,9 +1,9 @@
 import pygame
 from Engine.Components.transform import TRANSFORM
-import Engine.Game.defaults as e
-
+from Engine.Game.run import game as e
 class IMAGE(TRANSFORM):
-    image = pygame.image.load("Assets/images/pygame_logo.png")
+    path = "Assets/images/pygame_logo.png"
+    image = pygame.image.load(path)
     def blit(self):
         e.screen.blit(self.image, (self.position[0], self.position[1]))
 

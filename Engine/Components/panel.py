@@ -1,6 +1,6 @@
 import pygame
 from Engine.Components.transform import TRANSFORM
-import Engine.Game.defaults as e
+from Engine.Game.run import game as e
 
 class PANEL(TRANSFORM):
     thick = 1
