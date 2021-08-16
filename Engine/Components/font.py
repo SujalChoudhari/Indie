@@ -1,7 +1,18 @@
+from Engine.Components.colour import COLOUR
 import pygame
 
 class FONT:
-    def __init__(self, path, size, background):
+    """
+    FONT
+    create a pygame font asset to use if for text
+    """
+    def __init__(self, path, size, background:COLOUR):
+        """
+        Parameters:
+        path : String path to the .ttf file(or other pygame supported formats)
+        size : the size of the font
+        bakground: background colour
+        """
         self.path = path
         self.size = size
         self.background = background

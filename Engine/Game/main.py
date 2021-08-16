@@ -1,12 +1,9 @@
+from Engine.Components.colour import COLOUR
 import pygame
 import math
 
 class Main:
-    white = (255, 255, 255)
-    green = (0, 255, 0)
-    blue = (0, 0, 128)
-    black = (0, 0, 0)
-    background_colour = white
+    background_colour = COLOUR.White
     caption = "Slice.py"
     fps = 30
     screen_size = [900, 600]

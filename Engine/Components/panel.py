@@ -1,10 +1,11 @@
+from Engine.Components.colour import COLOUR
 import pygame
 from Engine.Components.transform import TRANSFORM
 from Engine.Game.run import game as e
 
 class PANEL(TRANSFORM):
     thick = 1
-    colour = e.green
+    colour = COLOUR.Gray
     rect = pygame.Rect(0, 0, 100, 100)
 
     def blit(self):

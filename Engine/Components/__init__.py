@@ -1,5 +1,6 @@
 from Engine.Components.button import BUTTON
 from Engine.Components.character_controller_topdown import CHARACTER_CONTROLLER_TOPDOWN
+from Engine.Components.colour import COLOUR
 from Engine.Components.font import FONT
 from Engine.Components.gameobject import GAMEOBJECT
 from Engine.Components.image import IMAGE
