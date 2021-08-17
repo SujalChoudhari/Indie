@@ -1,4 +1,4 @@
-from Engine.Components.colour import COLOUR
+from .colour import COLOUR
 import pygame
 
 class FONT:

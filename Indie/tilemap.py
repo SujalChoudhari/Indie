@@ -1,7 +1,6 @@
-from Engine.Components.image import IMAGE
+from .image import IMAGE
 import pygame
-from Engine.Game.run import game as e
-
+from . import app  as e
 
 class TILEMAP(IMAGE):
     map_size = [20, 20]

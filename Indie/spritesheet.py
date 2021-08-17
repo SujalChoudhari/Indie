@@ -1,5 +1,5 @@
 import pygame
-from Engine.Components.image import IMAGE
+from .image import IMAGE
 class SPRITESHEET(IMAGE):
     def __init__(self, filename):
         "Give a filename to select a spritesheet"

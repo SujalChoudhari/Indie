@@ -1,7 +1,7 @@
-from Engine.Components.colour import COLOUR
+from .colour import COLOUR
 import pygame
-from Engine.Components.transform import TRANSFORM
-from Engine.Game.run import game as e
+from .transform import TRANSFORM
+from . import app  as e
 
 class PANEL(TRANSFORM):
     thick = 1

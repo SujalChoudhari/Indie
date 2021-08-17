@@ -1,4 +1,4 @@
-from Engine.Components.gameobject import GAMEOBJECT
+from .gameobject import GAMEOBJECT
 
 class TRANSFORM(GAMEOBJECT):
     """

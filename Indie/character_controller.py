@@ -1,7 +1,7 @@
 import pygame
-from Engine.Components.image import IMAGE
+from .image import IMAGE
 
-class CHARACTER_CONTROLLER_TOPDOWN(IMAGE):
+class CHARACTER_CONTROLLER(IMAGE):
     horizontal = 0
     vertical = 0
     speed = 10

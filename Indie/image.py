@@ -1,6 +1,7 @@
 import pygame
-from Engine.Components.transform import TRANSFORM
-from Engine.Game.run import game as e
+from pygame import image
+from .transform import TRANSFORM
+from . import app  as e
 class IMAGE(TRANSFORM):
     path = "Assets/images/pygame_logo.png"
     image = pygame.image.load(path)
