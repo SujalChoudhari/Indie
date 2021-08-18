@@ -1,77 +1,67 @@
+from Indie import colour, physics, app
 import pygame
 from .image import IMAGE
 
+
 class CHARACTER_CONTROLLER(IMAGE):
     """
-    8 directional player movement\n
+    Object movement\n
     """
-    horizontal = 0
-    vertical = 0
+    relative_movement = [0,0]
+    moving_left = False
+    moving_right = False
+    moving_up = False
+    moving_down = False
     speed = 10
-
-    def move(self,axis:str = "None", value:bool= False)->None:
-        """
-        Used by control() to move the player\n
-
-        Parameters:\n
-        :axis(str):\n
-        :value(bool):\n
-        """
-        if "left" in axis and value:
-            self.horizontal = -1
-        elif "right" in axis and value:
-            self.horizontal = 1
-
-        elif "up" in axis and value:
-            self.vertical = -1
-
-        elif "down" in axis and value:
-            self.vertical = 1
-
-
-
-        if "left" in axis and not value:
-            self.horizontal = 0
-        elif "right" in axis and  not value:
-            self.horizontal = 0
-
-        elif "up" in axis and not value:
-            self.vertical = 0
-
-        elif "down" in axis and not value:
-            self.vertical = 0
 
     def blit(self):
         """
-        Draw the player on the screen\n
+        Draw the object on the screen\n
         """
-        self.position = [self.position[0] + (self.horizontal)*self.speed,self.position[1] + (self.vertical)*self.speed]
+        # self.position = [
+        #     self.position[0] + (self.horizontal)*self.speed, self.position[1] + (self.vertical)*self.speed]
         return super().blit()
 
-    def control(self,event)-> None:
+    def control(self, event) -> None:
         """
-        Control the player with thr help of ASDW key pressed\n
+        Get events of the object\n
         
         Parameters:\n
         :event(pygame.event.get()): Event to handle\n
         """
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                self.move("left", True)
+                self.moving_left = True
+
             if event.key == pygame.K_d:
-                self.move("right", True)
+                self.moving_right = True
+
             if event.key == pygame.K_w:
-                self.move("up", True)
+                self.moving_up = True
+
             if event.key == pygame.K_s:
-                self.move("down", True)
+                self.moving_down = True
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
-                self.move("left", False)
+                self.moving_left = False
+
             if event.key == pygame.K_d:
-                self.move("right", False)
+                self.moving_right = False
+
             if event.key == pygame.K_w:
-                self.move("up", False)
+                self.moving_up = False
+
             if event.key == pygame.K_s:
-                self.move("down", False)
-        
+                self.moving_down = False
+
+    def move(self):
+        """Move the object with the help of relative position"""
+
+        updated_location, collisions = physics.move(pygame.Rect(
+            self.position[0], self.position[1], self.size[0], self.size[1]), self.relative_movement)
+
+        self.position[0] = updated_location.x
+        self.position[1] = updated_location.y
+        self.relative_movement = [0,0]

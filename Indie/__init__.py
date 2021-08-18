@@ -6,7 +6,9 @@ from . import font
 from . import gameobject
 from . import image
 from . import panel
+from . import physics
 from . import spritesheet
+from . import spritestrip_animation
 from . import text
 from . import tilemap
 from . import transform

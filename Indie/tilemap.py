@@ -11,6 +11,8 @@ class TILEMAP(IMAGE):
     map_location = ""
     game_map = []
     tiles = {}
+    tile_rects = []
+    blitable_rect_list = []
     # Tiles {} example
     # {
     # "1":image(IMAGE),
@@ -21,9 +23,9 @@ class TILEMAP(IMAGE):
     # }
 
 
-    tile_rects = []
+    
 
-    def loadmap(self):
+    def loadmap(self,collidable_tiles = ["","0"]):
         """
         Load a map from a file
         Example content:
@@ -38,31 +40,27 @@ class TILEMAP(IMAGE):
         string1 = level.split("\n")
         self.game_map = list(map(list, string1))
 
-    def blit(self):
-        """
-        Draw the entire the map 
-        """
         y = 0
         for row in self.game_map:
             x = 0
             for tile in row:
                 if tile in self.tiles:
-                    e.screen.blit(
-                        self.tiles[tile].image, (x * self.tile_size, y * self.tile_size))
-                if tile != 0 or tile != "":
+                    self.blitable_rect_list.append((
+                        self.tiles[tile].image, (x * self.tile_size, y * self.tile_size)))
+                if tile in collidable_tiles:
                     self.tile_rects.append(pygame.Rect(
                         x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size))
 
                 x += 1
             y += 1
+
+    def blit(self):
+        """
+        Draw the entire the map 
+        """
+        for tile in self.blitable_rect_list:
+            e.screen.blit(tile[0],tile[1])
+        
         return
 
-    def collision_test(self, player):
-        """
-        Detects collision for the tilemaps
-        """
-        hit_list = []
-        for tile in self.tile_rects:
-            if player.colliderect(tile):
-                hit_list.append(tile)
-        return hit_list
+    

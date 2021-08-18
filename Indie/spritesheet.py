@@ -75,3 +75,10 @@ class SPRITESHEET(IMAGE):
             for i in range(0, x):
                 rects.append((i*grid_size, j*grid_size, grid_size, grid_size))
         return self.images_at(rects, colorkey)
+
+    # Load a whole strip of images
+    def load_strip(self, rect, image_count, colorkey = None):
+        """Loads a strip(horizontal) of images and returns them as a list"""
+        tups = [(rect[0]+rect[2]*x, rect[1], rect[2], rect[3])
+                for x in range(image_count)]
+        return self.images_at(tups, colorkey)
