@@ -1,7 +1,7 @@
 class GAMEOBJECT:
     """
-    GAMEOBJECT
-    Every object in the game is a Gameobject
+    GAMEOBJECT\n
+    Every object in the game is a Gameobject\n
     """
     def blit(self):
         pass

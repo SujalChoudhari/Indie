@@ -3,21 +3,45 @@ import pygame
 from . import app  as e
 
 class TILEMAP(IMAGE):
+    """
+    Create custom tilemaps for levels
+    """
     map_size = [20, 20]
     tile_size = 64
     map_location = ""
     game_map = []
     tiles = {}
+    # Tiles {} example
+    # {
+    # "1":image(IMAGE),
+    # "2":image(IMAGE),
+    # "3":image(IMAGE),
+    # "4":image(IMAGE),
+    # "5":image(IMAGE),
+    # }
+
 
     tile_rects = []
 
     def loadmap(self):
+        """
+        Load a map from a file
+        Example content:
+        /level.txt
+            1111
+            1001
+            1111
+
+        """
         with open(self.map_location) as f:
             level = f.read()
         string1 = level.split("\n")
         self.game_map = list(map(list, string1))
 
     def blit(self):
+        """
+        Draw the entire the map 
+        """
         y = 0
         for row in self.game_map:
             x = 0
@@ -34,6 +58,9 @@ class TILEMAP(IMAGE):
         return
 
     def collision_test(self, player):
+        """
+        Detects collision for the tilemaps
+        """
         hit_list = []
         for tile in self.tile_rects:
             if player.colliderect(tile):

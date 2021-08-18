@@ -3,15 +3,15 @@ import pygame
 
 class FONT:
     """
-    FONT
-    create a pygame font asset to use if for text
+    FONT\n
+    create a pygame font asset to use if for text\n
     """
-    def __init__(self, path, size, background:COLOUR):
+    def __init__(self, path:str, size:int, background:COLOUR):
         """
-        Parameters:
-        path : String path to the .ttf file(or other pygame supported formats)
-        size : the size of the font
-        bakground: background colour
+        Parameters:\n
+        :path (str): String path to the .ttf file(or other pygame supported formats)\n
+        :size (int): the size of the font\n
+        :bakground(COLOUR): background colour \n
         """
         self.path = path
         self.size = size

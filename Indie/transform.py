@@ -2,11 +2,11 @@ from .gameobject import GAMEOBJECT
 
 class TRANSFORM(GAMEOBJECT):
     """
-    TRANSFORM
-    This holds the physical location of a gameObject
-    `position: [x,y]`
-    `size: [x,y]`
-    `rotation:[n:degrees]`
+    TRANSFORM\n
+    This holds the physical location of a gameObject\n
+    position: [x,y]\n
+    size: [x,y]\n
+    rotation:[n:degrees]\n
     """
     position = [10, 10]
     size = [100, 100]

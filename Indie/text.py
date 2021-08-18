@@ -1,8 +1,20 @@
+from Indie.colour import COLOUR
 from .transform import TRANSFORM
 from .font import FONT
 from . import app  as e
 class TEXT(TRANSFORM):
-    def __init__(self, text, font: FONT, colour):
+    """
+    Create Ready to use texts\n
+    """
+    def __init__(self, text:str, font: FONT, colour:COLOUR):
+        """
+        Create Ready to use texts\n
+        \n
+        Parameters:\n
+        :text(str): The text you want to show\n
+        :font(FONT): The font the text  should have\n
+        :colour(COLOUR): The colour of the text\n
+        """
         self.text = text
         self.font = font
         self.colour = colour
@@ -10,5 +22,8 @@ class TEXT(TRANSFORM):
             self.text, True, self.colour, self.font.background)
 
     def blit(self):
+        """
+        Draw the text on to the screen\n
+        """
         e.screen.blit(self.font, (self.position[0], self.position[1]))
         return super().blit()

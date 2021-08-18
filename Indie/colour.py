@@ -9,24 +9,19 @@ def clamp(value,min,max):
 
 class COLOUR():
     """
-    COLOUR
-    Make a colour using RGB values
+    Make a colour using RGB values\n
     """
-    def __init__(self,R,G,B):
+    def make(self,R,G,B) -> None:
         """
-        Parameters:
-        `R: Red` range(0,255)
-        `G: Green` range(0,255)
-        `B: BLUE` range(0,255)
+        Make a new Colour with the help of RGB values\n
+        Parameters:\n
+        R: Red(int) range(0,255)\n
+        G: Green(int) range(0,255)\n
+        B: BLUE(int) range(0,255)\n
         """
-        self.R = R
-        self.G = G
-        self.B = B
-    
-    def colour(self):
-         return (clamp(self.R,0,255),clamp(self.G,0,255),clamp(self.B,0,255))
+        return (clamp(R,0,255),clamp(G,0,255),clamp(B,0,255))
 
-    
+    #Standared colours
     Black	= (0,0,0)
     White	= (255,255,255)
     Red	    = (255,0,0)

@@ -2,11 +2,21 @@ import pygame
 from .image import IMAGE
 
 class CHARACTER_CONTROLLER(IMAGE):
+    """
+    8 directional player movement\n
+    """
     horizontal = 0
     vertical = 0
     speed = 10
 
-    def move(self,axis:str = "None", value:bool= False):
+    def move(self,axis:str = "None", value:bool= False)->None:
+        """
+        Used by control() to move the player\n
+
+        Parameters:\n
+        :axis(str):\n
+        :value(bool):\n
+        """
         if "left" in axis and value:
             self.horizontal = -1
         elif "right" in axis and value:
@@ -32,10 +42,19 @@ class CHARACTER_CONTROLLER(IMAGE):
             self.vertical = 0
 
     def blit(self):
+        """
+        Draw the player on the screen\n
+        """
         self.position = [self.position[0] + (self.horizontal)*self.speed,self.position[1] + (self.vertical)*self.speed]
         return super().blit()
 
-    def controlls(self,event):
+    def control(self,event)-> None:
+        """
+        Control the player with thr help of ASDW key pressed\n
+        
+        Parameters:\n
+        :event(pygame.event.get()): Event to handle\n
+        """
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 self.move("left", True)
