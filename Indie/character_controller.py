@@ -14,6 +14,11 @@ class CHARACTER_CONTROLLER(IMAGE):
     moving_down = False
     speed = 10
 
+    up_key = pygame.K_w
+    down_key = pygame.K_s
+    left_key = pygame.K_a
+    right_key = pygame.K_d
+
     def blit(self):
         """
         Draw the object on the screen\n
@@ -31,29 +36,29 @@ class CHARACTER_CONTROLLER(IMAGE):
         """
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
+            if event.key == self.left_key:
                 self.moving_left = True
 
-            if event.key == pygame.K_d:
+            if event.key == self.right_key:
                 self.moving_right = True
 
-            if event.key == pygame.K_w:
+            if event.key == self.up_key:
                 self.moving_up = True
 
-            if event.key == pygame.K_s:
+            if event.key == self.down_key:
                 self.moving_down = True
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_a:
+            if event.key == self.left_key:
                 self.moving_left = False
 
-            if event.key == pygame.K_d:
+            if event.key == self.right_key:
                 self.moving_right = False
 
-            if event.key == pygame.K_w:
+            if event.key == self.up_key:
                 self.moving_up = False
 
-            if event.key == pygame.K_s:
+            if event.key == self.down_key:
                 self.moving_down = False
 
     def move(self):

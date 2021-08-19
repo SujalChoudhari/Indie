@@ -1,15 +1,18 @@
 from .colour import COLOUR
 import pygame
 from .transform import TRANSFORM
-from . import app  as e
+from . import app as e
+
 
 class PANEL(TRANSFORM):
     """
     A UI panel/rectangle
     """
-    thick = 1
-    colour = COLOUR.Gray
-    rect = pygame.Rect(0, 0, 100, 100)
+
+    def __init__(self, thick, colour) -> None:
+        self.thick = thick
+        self.colour = colour
+        super().__init__()
 
     def blit(self):
         """

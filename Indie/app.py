@@ -2,17 +2,21 @@
 from . import colour
 import math
 import pygame
+import sys
 pygame.init()
 
 
 # Screen Constants
 background_colour = colour.COLOUR.Gray
 caption = "Indie"
-icon = pygame.display.set_icon(
-    pygame.image.load('Assets/images/logo.png'))
+icon_file = 'Assets/images/logo.png'
 fps = 30
 screen_size = [900, 600]
 scale_amount = 1
+
+
+icon = pygame.display.set_icon(
+    pygame.image.load(icon_file))
 fps_clock = pygame.time.Clock()
 
 # Window is the display on which :screen: is blited on
@@ -27,7 +31,7 @@ screen = pygame.Surface(
 
 
 # Main RUN function
-def run(awake=None, update=None, input=None) -> None:
+def run(awake=None, update=None, inputs=None) -> None:
     """
     Create a new screen. \n
     `Parameters:` \n
@@ -43,8 +47,15 @@ def run(awake=None, update=None, input=None) -> None:
 
     while 1:
         window.fill(background_colour)
-        if input:
-            input()
+        
+        mouse = pygame.mouse.get_pos()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if inputs:
+                
+                inputs(event,mouse)
 
         if update:
             update()

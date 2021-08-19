@@ -6,7 +6,7 @@ class TEXT(TRANSFORM):
     """
     Create Ready to use texts\n
     """
-    def __init__(self, text:str, font: FONT, colour:COLOUR):
+    def __init__(self, text:str, font: FONT, colour:COLOUR,background_colour:COLOUR):
         """
         Create Ready to use texts\n
         \n
@@ -18,8 +18,9 @@ class TEXT(TRANSFORM):
         self.text = text
         self.font = font
         self.colour = colour
+        self.background_colour = background_colour
         self.font = self.font.font.render(
-            self.text, True, self.colour, self.font.background)
+            self.text, True, self.colour, self.background_colour)
 
     def blit(self):
         """

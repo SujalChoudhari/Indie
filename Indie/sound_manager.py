@@ -1,10 +1,11 @@
+from Indie.gameobject import GAMEOBJECT
 from pygame import mixer
 
 # Starting the mixer
 mixer.init()
 
 
-class MUSIC():
+class MUSIC(GAMEOBJECT):
     """
     Manages the background music
     """
@@ -56,6 +57,15 @@ class SOUND():
         :path(str): the path of the sound to be added
         """
         self.sounds[name] = mixer.Sound(path)
+
+    def remove(self,name:str):
+        """
+        Remove sounds after use
+
+        Parameters:
+        :name(str): the name of sound to remove
+        """
+        del self.sounds[name]
 
     def play(self,name:str):
         """

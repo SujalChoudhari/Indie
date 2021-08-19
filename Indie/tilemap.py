@@ -2,7 +2,7 @@ from .image import IMAGE
 import pygame
 from . import app  as e
 
-class TILEMAP(IMAGE):
+class TILEMAP():
     """
     Create custom tilemaps for levels
     """

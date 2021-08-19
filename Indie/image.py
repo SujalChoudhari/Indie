@@ -6,8 +6,10 @@ class IMAGE(TRANSFORM):
     """
     Add images on the screen\n
     """
-    path = "Assets/images/indie_logo.png"
+    path = "Assets/images/logo.png"
     image = pygame.image.load(path)
+
+        
     def blit(self):
         """
         Draw the images on the screen\n
