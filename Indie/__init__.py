@@ -7,6 +7,7 @@ from . import gameobject
 from . import image
 from . import panel
 from . import physics
+from . import sound_manager
 from . import spritesheet
 from . import spritestrip_animation
 from . import text
