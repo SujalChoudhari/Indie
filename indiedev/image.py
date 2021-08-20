@@ -10,7 +10,7 @@ class IMAGE(TRANSFORM):
     try:
         image = pygame.image.load(path)
     except:
-        pass
+        print("[MISSING] missing the file path") 
 
         
     def blit(self):

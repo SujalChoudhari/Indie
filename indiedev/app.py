@@ -14,7 +14,7 @@ fps = 30
 screen_size = [900, 600]
 scale_amount = 1
 
-
+icon_file = ""
 fps_clock = pygame.time.Clock()
 
 # Window is the display on which :screen: is blited on
@@ -38,6 +38,11 @@ def run(awake=None, update=None, inputs=None) -> None:
     :input(function name) : this is called before the update\n
     \n
     """
+    try:
+        pygame.display.set_icon(pygame.image.load(icon_file))
+    except:
+        print("[MISSING] Ignoring the missing files, icon set to default")
+
     pygame.display.set_caption(caption)  # Set the title of the scene
     if awake:
         awake()

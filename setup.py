@@ -19,7 +19,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description = long_description,
     packages=find_packages(),
-    install_requires=['pygame'],
+    install_requires=['pygame',"json","pickle"],
     keywords=['python', 'pygame', 'engine', 'pre-written code'],
     classifiers=[
         "Development Status :: 1 - Planning",
