@@ -1,4 +1,4 @@
-from Indie.gameobject import GAMEOBJECT
+from .gameobject import GAMEOBJECT
 from pygame import mixer
 
 # Starting the mixer
@@ -50,29 +50,29 @@ class SOUND():
     sounds = {}
     def add(self,name:str,path:str):
         """
-        Add sound int the sounds library
-        
-        Parameters:
-        :name(str): the name of the sound for playing 
-        :path(str): the path of the sound to be added
+        Add sound int the sounds library\n
+        \n
+        Parameters:\n
+        :name(str): the name of the sound for playing \n
+        :path(str): the path of the sound to be added\n
         """
         self.sounds[name] = mixer.Sound(path)
 
     def remove(self,name:str):
         """
-        Remove sounds after use
-
-        Parameters:
-        :name(str): the name of sound to remove
+        Remove sounds after use\n
+        \n
+        Parameters:\n
+        :name(str): the name of sound to remove\n
         """
         del self.sounds[name]
 
     def play(self,name:str):
         """
-        Play a sound
-
-        Parameters:
-        :name(str): name of the sound to be played
+        Play a sound\n
+        \n
+        Parameters:\n
+        :name(str): name of the sound to be played\n
         """
         mixer.Sound.play(self.sounds[name])
         

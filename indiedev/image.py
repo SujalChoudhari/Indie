@@ -6,7 +6,7 @@ class IMAGE(TRANSFORM):
     """
     Add images on the screen\n
     """
-    path = "Assets/images/logo.png"
+    path = "./images/logo.png"
     image = pygame.image.load(path)
 
         

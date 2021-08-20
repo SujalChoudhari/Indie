@@ -1,4 +1,4 @@
-from Indie import colour, physics, app
+from . import colour, physics, app
 import pygame
 from .image import IMAGE
 

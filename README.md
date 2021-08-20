@@ -1,10 +1,10 @@
-# INDIE 
+# indiedev 
 
 pygame framework
 
 ## Introduction
 ---
-Indie is a pygame framework made by [@NotSujal.](https://github.com/NotSujal)
+indiedev is a pygame framework made by [@NotSujal.](https://github.com/NotSujal)
 It has pre-written classes required for developing games.
 
 
@@ -12,15 +12,15 @@ It has pre-written classes required for developing games.
 ## Installation
 ---
 ```py
-pip install Indie
+pip install indiedev
 ```
-
-(not yet uploaded to pypi)  
-*Download from the [Github](https://github.com/NotSujal/Indie)
+ 
+ or Download from the [Github](https://github.com/NotSujal/Indie)
 
 ## How to use
 ---
-Brief information of each submodules of Indie
+Brief information of each submodules of indiedev
+
 ### Setting up (app)
 ---
 
@@ -28,7 +28,7 @@ There are various constants to start setting up the window.
 
 ```py
 background_colour = (0,0,0)
-caption = "Indie"
+caption = "indiedev"
 icon_file = 'Assets/images/logo.png'
 fps = 30
 screen_size = [900, 600]
@@ -37,11 +37,11 @@ scale_amount = 1
 
 To set each one of it, what you can do is
 ```py
-import Indie
+import indiedev
 
-Indie.app.background_colour = (255,255,255)
+indiedev.app.background_colour = (255,255,255)
 
-Indie.app.caption = "My new Project"
+indiedev.app.caption = "My new Project"
 #applicable for all the screen constants
 ```
 
@@ -50,7 +50,7 @@ Indie.app.caption = "My new Project"
 A Screen is just a infinite while loop, with multiple screens(loops) you can create multiple scenes, i.e. Start Screen, Game Screen, etc.
 
 ```py
-Indie.app.run(awake=None, update=None, inputs=None)
+indiedev.app.run(awake=None, update=None, inputs=None)
 # This Creates a screen
 
 ```
@@ -84,7 +84,7 @@ def Awake():
     # load the data from the files, load the images, sounds, etc.
     pass
 
-Indie.app.run(awake=Awake, update=Update, inputs=Inputs)
+indiedev.app.run(awake=Awake, update=Update, inputs=Inputs)
 ```
 
 
@@ -114,7 +114,7 @@ Font helps in creating font assets for text.
 Font takes `path`( location of only pygame supported font assets(.ttf,etc)) and `size`(in int)
 ```py
 #creating font asset
-huge_font = Indie.font.FONT(path = "Assets/fonts/germania_one/germania_regular_one.ttf", size = 128)
+huge_font = indiedev.font.FONT(path = "Assets/fonts/germania_one/germania_regular_one.ttf", size = 128)
 ```
 
 ### COLOUR
@@ -124,16 +124,16 @@ An Easy way to make colours using RGB values, It has some built in colours
 
 ```py
 # make a new colour
-Indie.colour.COLOUR.make(255,0,0) # R=255, G=0, B=0
+indiedev.colour.COLOUR.make(255,0,0) # R=255, G=0, B=0
 # this will return (255,0,0)
 # it clamps values between 0 and 255, so,
-# Indie.colour.COLOUR.make(300,400,500) will return (255,255,255)
+# indiedev.colour.COLOUR.make(300,400,500) will return (255,255,255)
 ```
 
 Using Standared Colours
 ```py
 
-Indie.app.background_colour = Indie.colour.COLOUR.White
+indiedev.app.background_colour = indiedev.colour.COLOUR.White
 
 # List of standared colours
 Black	= (0,0,0)
@@ -161,7 +161,7 @@ It has constants such as `text`,`colour`,`font`,`background_colour`
 This overrites the blit from the GameObject class
 
 ```py
-some_text = Indie.text.TEXT(text ="Hello, World!", font =huge_font, colour = Indie.colour.COLOUR.Black, background_colour= None)
+some_text = indiedev.text.TEXT(text ="Hello, World!", font =huge_font, colour = indiedev.colour.COLOUR.Black, background_colour= None)
 
 
 def Update():
@@ -178,7 +178,7 @@ It uses `thick` the thickness of rectangle, `colour` the colour of rectangle,
 
 
 ```py
-square = Indie.panel.PANEL(1,Indie.colour.COLOUR.Grey)
+square = indiedev.panel.PANEL(1,indiedev.colour.COLOUR.Grey)
 ```
 
 ### IMAGE
@@ -189,7 +189,7 @@ It takes a extra `path`(str) of the image.
 It also overrites the `scale` and `rotate` functions of Transform.
 
 ```py
-image = Indie.image.Image(path = "img.png") # can also set position,size and rotation here.
+image = indiedev.image.Image(path = "img.png") # can also set position,size and rotation here.
 
 def Update():
     image.blit()
@@ -206,7 +206,7 @@ it draws a box around a centered text.
 It has a extra `padding` parameter which gives space between text and box.
 
 ```py
-button1 = Indie.button.BUTTON(text="Press Me", font=huge_font, colour: (0,0,0), background_colour: (21,21,21))
+button1 = indiedev.button.BUTTON(text="Press Me", font=huge_font, colour: (0,0,0), background_colour: (21,21,21))
 # note the above parameters are for the text of buttons, customize the box in blit()
 
 button1.padding = 0.5
@@ -228,7 +228,7 @@ Character controller component is just an image component but movable with key i
 You can set the inputs by
 ```py
 #initiate the controller
-player = Indie.character_controller.CHARACTER_CONTROLLER()
+player = indiedev.character_controller.CHARACTER_CONTROLLER()
 #speed of controller
 player.speed = 2
 player.scale(16, 16) # player.size = [16,16] wont work cause the image is already loaded
@@ -280,12 +280,12 @@ This sprite sheet component is taken from [here](https://www.pygame.org/wiki/Spr
 ```py
 
 images = []
-sprite_sheet = Indie.spritesheet.SPRITESHEET("Assets\images\spritesheet.png")
+sprite_sheet = indiedev.spritesheet.SPRITESHEET("Assets\images\spritesheet.png")
 # this will populate the images[] with IMAGE objects.
 
 # by using load_set
     #this allows you to choose a desired grid from the spritesheet.png
-images = sprite_sheet.load_set(x=4, y=2, grid_size=16, colorkey=Indie.colour.COLOUR.White)
+images = sprite_sheet.load_set(x=4, y=2, grid_size=16, colorkey=indiedev.colour.COLOUR.White)
 
 # you can use load_set, image_at, load_strip, images_at as per criteria
 ```
@@ -297,7 +297,7 @@ It uses the load_strip from Spritesheet class.
 
 ```py
 
-player_walk_cycle = Indie.spritestrip_animation.SPRITESTRIP_ANIMATION(
+player_walk_cycle = indiedev.spritestrip_animation.SPRITESTRIP_ANIMATION(
     filename="player_animation.png", rect=(0,0,16,16), count=5, colorkey=None, loop=False, frames=10)
     # select the first image from the strip by rect parameter
     # count is used to specify how many images from that strip will be used
@@ -317,7 +317,7 @@ These tilemaps can stack on top of each other and can be collided with.
 This uses the physics.py library for that.
 
 ```py
-level1 = Indie.tilemap.TILEMAP()
+level1 = indiedev.tilemap.TILEMAP()
 level1.map_location = "map.txt"
 level1.tile_size = 16 # size of a tile f the tilemap
 ```
@@ -342,7 +342,7 @@ level1.tiles = {
 }
 
 # setting up physics
-Indie.physics.collidable_tile_rects = level1.tile_rects 
+indiedev.physics.collidable_tile_rects = level1.tile_rects 
 # tile_rects is a list of all the tiles in the tilemap.
 
 def Awake():
@@ -352,7 +352,7 @@ def Awake():
 def Update():
     level1.blit()
 
-Indie.app.run(awake=Awake,update=Update,inputs=Inputs)
+indiedev.app.run(awake=Awake,update=Update,inputs=Inputs)
 ```
 
 ### SOUND_MANAGER
@@ -362,16 +362,19 @@ This allows us to create sound libraries and play music
 
 ```py
 # background music
-background_music = Indie.sound_manager.MUSIC("Assets/sounds/background.mp3")
+background_music = indiedev.sound_manager.MUSIC("Assets/sounds/background.mp3")
 background_music.play() # there are various methods to change volume, fade, etc..
 ```
 
 ```py
 # for sound libraries
-soundcard_lvl1 = Indie.sound_manager.SOUND()
+soundcard_lvl1 = indiedev.sound_manager.SOUND()
 soundcard_lvl1.add("die","Assets/sounds/die.wav")
 soundcard_lvl1.add("shoot","Assets/sounds/shoot.wav")
 
 # to play the sound 
 soundcard_lvl1.play("die")
 ```
+
+
+For Suggestions and Feature improvments, Contact @NotSujal.

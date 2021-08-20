@@ -1,25 +1,25 @@
-from Indie.image import IMAGE
+from .image import IMAGE
 from . import spritesheet
 
 
 class SPRITESTRIP_ANIMATION(IMAGE):
-    """sprite strip animator
+    """sprite strip animator\n
     
-    This class provides an iterator (iter() and next() methods), and a
-    __add__() method for joining strips which comes in handy when a
-    strip wraps to the next row.
+    This class provides an iterator (iter() and next() methods), and a\n
+    __add__() method for joining strips which comes in handy when a\n
+    strip wraps to the next row.\n
     """
     def __init__(self, filename, rect, count, colorkey=None, loop=False, frames=1):
-        """construct a SpriteStripAnim
-        
-        filename, rect, count, and colorkey are the same arguments used
-        by spritesheet.load_strip.
-        
-        loop is a boolean that, when True, causes the next() method to
-        loop. If False, the terminal case raises StopIteration.
-        
-        frames is the number of ticks to return the same image before
-        the iterator advances to the next image.
+        """construct a SpriteStripAnim\n
+        \n
+        filename, rect, count, and colorkey are the same arguments used\n
+        by spritesheet.load_strip.\n
+        \n
+        loop is a boolean that, when True, causes the next() method to\n
+        loop. If False, the terminal case raises StopIteration.\n
+        \n
+        frames is the number of ticks to return the same image before\n
+        the iterator advances to the next image.\n
         """
         self.filename = filename
         ss = spritesheet.SPRITESHEET(filename)
@@ -32,7 +32,7 @@ class SPRITESTRIP_ANIMATION(IMAGE):
 
     def iter(self):
         """
-        Iterate through the animation once
+        Iterate through the animation once\n
         """
         self.i = 0
         self.f = self.frames
@@ -41,7 +41,7 @@ class SPRITESTRIP_ANIMATION(IMAGE):
 
     def next(self):
         """
-        Bring up the next frame of the animation
+        Bring up the next frame of the animation\n
         """
         if self.i >= len(self.images):
             if not self.loop:
@@ -57,10 +57,10 @@ class SPRITESTRIP_ANIMATION(IMAGE):
 
     def __add__(self, ss):
         """
-        Join a animation with another animation
-
-        Parameters:
-        ss(SPRITESHEET):
+        Join a animation with another animation\n
+        \n
+        Parameters:\n
+        ss(SPRITESHEET):\n
         """
         self.images.extend(ss.images)
         return self

@@ -27,13 +27,13 @@ class TILEMAP():
 
     def loadmap(self,collidable_tiles = ["","0"]):
         """
-        Load a map from a file
-        Example content:
-        /level.txt
-            1111
-            1001
-            1111
-
+        Load a map from a file\n
+        Example content:\n
+        /level.txt\n
+            1111\n
+            1001\n
+            1111\n
+        \n
         """
         with open(self.map_location) as f:
             level = f.read()

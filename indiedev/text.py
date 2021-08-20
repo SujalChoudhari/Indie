@@ -1,4 +1,4 @@
-from Indie.colour import COLOUR
+from .colour import COLOUR
 from .transform import TRANSFORM
 from .font import FONT
 from . import app  as e

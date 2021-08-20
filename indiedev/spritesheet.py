@@ -1,4 +1,4 @@
-from Indie.colour import COLOUR
+from .colour import COLOUR
 import pygame
 from .image import IMAGE
 

@@ -8,8 +8,8 @@ pygame.init()
 
 # Screen Constants
 background_colour = colour.COLOUR.Gray
-caption = "Indie"
-icon_file = 'Assets/images/logo.png'
+caption = "indiedev"
+icon_file = './images/logo.png'
 fps = 30
 screen_size = [900, 600]
 scale_amount = 1
