@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open("README.md", "r") as f:
     long_description = f.read()
 
-VERSION = '1.0.0'
+VERSION = '1.0.2'
 DESCRIPTION = 'Pre-written Classes for pygame'
 # Setting up
 setup(

@@ -7,16 +7,14 @@ pygame.init()
 
 
 # Screen Constants
-background_colour = colour.COLOUR.Gray
+background_colour = colour.COLOUR.White
 caption = "indiedev"
-icon_file = './images/logo.png'
+
 fps = 30
 screen_size = [900, 600]
 scale_amount = 1
 
 
-icon = pygame.display.set_icon(
-    pygame.image.load(icon_file))
 fps_clock = pygame.time.Clock()
 
 # Window is the display on which :screen: is blited on
@@ -41,7 +39,6 @@ def run(awake=None, update=None, inputs=None) -> None:
     \n
     """
     pygame.display.set_caption(caption)  # Set the title of the scene
-
     if awake:
         awake()
 
