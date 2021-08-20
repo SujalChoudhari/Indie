@@ -15,6 +15,6 @@ from . import text
 from . import tilemap
 from . import transform
 
-print("Thanks for using indiedev, contribute on https://githyb.com/NotSujal/Indie")
+print("Thanks for using indiedev, contribute on https://github.com/NotSujal/Indie")
 
 

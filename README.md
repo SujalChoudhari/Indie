@@ -17,6 +17,8 @@ pip install indiedev
  
  or Download from the [Github](https://github.com/NotSujal/Indie)
 
+
+
 ## How to use
 ---
 Brief information of each submodules of indiedev
@@ -38,6 +40,7 @@ scale_amount = 1
 To set each one of it, what you can do is
 ```py
 import indiedev
+indiedev.app.init()
 
 indiedev.app.background_colour = (255,255,255)
 
@@ -124,7 +127,7 @@ An Easy way to make colours using RGB values, It has some built in colours
 
 ```py
 # make a new colour
-indiedev.colour.COLOUR.make(255,0,0) # R=255, G=0, B=0
+indiedev.colour.COLOUR().make(255,0,0) # R=255, G=0, B=0
 # this will return (255,0,0)
 # it clamps values between 0 and 255, so,
 # indiedev.colour.COLOUR.make(300,400,500) will return (255,255,255)
@@ -376,5 +379,27 @@ soundcard_lvl1.add("shoot","Assets/sounds/shoot.wav")
 soundcard_lvl1.play("die")
 ```
 
+### FILES
+---
+ Using this module it is easy to save and get data( stores in json)
+
+ ```py
+
+lvl2_data = indiedev.files.FILE("lvl2") # this creates a "lvl2.json" file.
+
+# to add data
+lvl2_data.save("health",20) # a key value pair
+
+current_health = lvl2_data.get("health")
+ ```
+
+## Whats New
+---
+
+### version 1.0.3
+1. fixed background colour 
+2. fixed image import errors
+3. save system added(json) and fixed
+4. init() added
 
 For Suggestions and Feature improvments, Contact @NotSujal.

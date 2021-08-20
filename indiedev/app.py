@@ -3,7 +3,7 @@ from . import colour
 import math
 import pygame
 import sys
-pygame.init()
+
 
 
 # Screen Constants
@@ -13,19 +13,23 @@ caption = "indiedev"
 fps = 30
 screen_size = [900, 600]
 scale_amount = 1
-
 icon_file = ""
 fps_clock = pygame.time.Clock()
 
-# Window is the display on which :screen: is blited on
-# It is used for zooming the screen, i.e. to make pixels bigger(for a pixel art game)
-# Recomended to blit text on window for crisp look (not by default)
-window = pygame.display.set_mode((screen_size[0], screen_size[1]))
-
-# All the images,geometry is drawn on the screen and
-# then screen is streched to fit the widow according to scale_amount
-screen = pygame.Surface(
-    (math.ceil(screen_size[0]/scale_amount), math.ceil(screen_size[1]/scale_amount)))
+window = None
+screen = None
+def init():
+    global window,screen
+    
+    pygame.init()
+    # Window is the display on which :screen: is blited on
+    # It is used for zooming the screen, i.e. to make pixels bigger(for a pixel art game)
+    # Recomended to blit text on window for crisp look (not by default)
+    window = pygame.display.set_mode((screen_size[0], screen_size[1]))
+    # All the images,geometry is drawn on the screen and
+    # then screen is streched to fit the widow according to scale_amount
+    screen = pygame.Surface(
+        (math.ceil(screen_size[0]/scale_amount), math.ceil(screen_size[1]/scale_amount)))
 
 
 # Main RUN function
@@ -48,15 +52,14 @@ def run(awake=None, update=None, inputs=None) -> None:
         awake()
 
     while 1:
-        window.fill(background_colour)
-        
+        screen.fill(background_colour)
         mouse = pygame.mouse.get_pos()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if inputs:
                 
+            if inputs:
                 inputs(event,mouse)
 
         if update:

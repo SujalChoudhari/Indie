@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open("README.md", "r") as f:
     long_description = f.read()
 
-VERSION = '1.0.2'
+VERSION = '1.0.3'
 DESCRIPTION = 'Pre-written Classes for pygame'
 # Setting up
 setup(
@@ -14,15 +14,15 @@ setup(
     url = "https://github.com/NotSujal/Indie",
     version=VERSION,
     author="Sujal Choudhari (NotSujal)",
-    author_email="<sjlchoudhari@gmail.com>",
+    author_email="sjlchoudhari@gmail.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description = long_description,
     packages=find_packages(),
-    install_requires=['pygame',"json","pickle"],
+    install_requires=['pygame'],
     keywords=['python', 'pygame', 'engine', 'pre-written code'],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",

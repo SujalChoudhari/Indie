@@ -24,11 +24,14 @@ class FILE():
         :key: the key holds the value\n
         :value: the actual data to be stored\n
         """
-        with open(f"{self.name}.json","r") as f:
-            data = json.load(f)
+        try:
+            with open(f"{self.name}.json","r") as f:
+                data = json.load(f)
 
-        data[key] = value
-
+            data[key] = value
+        except:
+            data = {f"{self.name}'s data":f"{self.name}"}
+        
         with open(f"{self.name}.json", 'w') as f:
             json.dump(data, f,indent=4, sort_keys=True)
 
@@ -45,12 +48,11 @@ class FILE():
         try:
             with open(f"{self.name}.json", 'r') as f:
                 data = json.load(f)
-
                 value = data[key]
                 return value
 
-        except:
-            print("[Missing] the key supplied is missing")
+        except Exception as e:
+            print("[Missing] the key supplied is missing",e)
     
     def delete(self,key):
         """
