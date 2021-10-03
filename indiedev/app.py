@@ -14,20 +14,19 @@ fps = 30
 screen_size = [900, 600]
 scale_amount = 1
 icon_file = ""
-fps_clock = pygame.time.Clock()
 
 window = None
 screen = None
 def init():
+    """
+    Initiate the indiedev Module
+    """
     global window,screen
     
     pygame.init()
-    # Window is the display on which :screen: is blited on
-    # It is used for zooming the screen, i.e. to make pixels bigger(for a pixel art game)
-    # Recomended to blit text on window for crisp look (not by default)
+
     window = pygame.display.set_mode((screen_size[0], screen_size[1]))
-    # All the images,geometry is drawn on the screen and
-    # then screen is streched to fit the widow according to scale_amount
+
     screen = pygame.Surface(
         (math.ceil(screen_size[0]/scale_amount), math.ceil(screen_size[1]/scale_amount)))
 
@@ -71,4 +70,4 @@ def run(awake=None, update=None, inputs=None) -> None:
 
         #fix the framerate and update the screen
         pygame.display.update()
-        fps_clock.tick(fps)
+        pygame.time.Clock().tick(fps)

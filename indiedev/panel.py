@@ -8,11 +8,12 @@ class PANEL(TRANSFORM):
     """
     A UI panel/rectangle
     """
-
-    def __init__(self, thick, colour) -> None:
+    def __init__(self, position, size, rotation,thick, colour) -> None:
         self.thick = thick
         self.colour = colour
-        super().__init__()
+        self.size = size
+        super().__init__(position=position, size=size, rotation=rotation)
+
 
     def blit(self):
         """

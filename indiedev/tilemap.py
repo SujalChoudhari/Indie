@@ -1,18 +1,16 @@
 from .image import IMAGE
 import pygame
 from . import app  as e
-
+from . import physics
 class TILEMAP():
     """
     Create custom tilemaps for levels
     """
-    map_size = [20, 20]
-    tile_size = 64
+    tile_size = 16
     map_location = ""
-    game_map = []
+   
     tiles = {}
-    tile_rects = []
-    blitable_rect_list = []
+    
     # Tiles {} example
     # {
     # "1":image(IMAGE),
@@ -22,8 +20,9 @@ class TILEMAP():
     # "5":image(IMAGE),
     # }
 
-
-    
+    blitable_rect_list = []
+    game_map = []
+    tile_rects = []
 
     def loadmap(self,collidable_tiles = ["","0"]):
         """
@@ -50,7 +49,7 @@ class TILEMAP():
                 if tile in collidable_tiles:
                     self.tile_rects.append(pygame.Rect(
                         x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size))
-
+                    physics.collidable_tile_rects += self.tile_rects
                 x += 1
             y += 1
 

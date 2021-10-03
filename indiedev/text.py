@@ -22,9 +22,14 @@ class TEXT(TRANSFORM):
         self.font = self.font.font.render(
             self.text, True, self.colour, self.background_colour)
 
+
     def blit(self):
         """
         Draw the text on to the screen\n
         """
         e.screen.blit(self.font, (self.position[0], self.position[1]))
+        width = self.font.get_width()
+        height = self.font.get_height()
+        self.size = [width,height]
         return super().blit()
+

@@ -23,8 +23,6 @@ class CHARACTER_CONTROLLER(IMAGE):
         """
         Draw the object on the screen\n
         """
-        # self.position = [
-        #     self.position[0] + (self.horizontal)*self.speed, self.position[1] + (self.vertical)*self.speed]
         return super().blit()
 
     def control(self, event) -> None:
@@ -38,15 +36,18 @@ class CHARACTER_CONTROLLER(IMAGE):
         if event.type == pygame.KEYDOWN:
             if event.key == self.left_key:
                 self.moving_left = True
+                
 
             if event.key == self.right_key:
                 self.moving_right = True
 
             if event.key == self.up_key:
                 self.moving_up = True
+                
 
             if event.key == self.down_key:
                 self.moving_down = True
+                
 
         if event.type == pygame.KEYUP:
             if event.key == self.left_key:
@@ -60,6 +61,16 @@ class CHARACTER_CONTROLLER(IMAGE):
 
             if event.key == self.down_key:
                 self.moving_down = False
+
+        if self.moving_up:
+            self.relative_movement[1] = -self.speed
+        if self.moving_down:
+            self.relative_movement[1] = self.speed
+        if self.moving_left:
+            self.relative_movement[0] = -self.speed
+        if self.moving_right:
+            self.relative_movement[0] = self.speed
+            
 
     def move(self):
         """Move the object with the help of relative position"""

@@ -6,18 +6,24 @@ class IMAGE(TRANSFORM):
     """
     Add images on the screen\n
     """
-    path = "indiedev\images\logo.png"
-    try:
-        image = pygame.image.load(path)
-    except:
-        print("[MISSING] missing the file path") 
+    def __init__(self,position,size,rotation,path) -> None:
+        self.path = path
+        try:
+            self.image = pygame.image.load(self.path).convert_alpha()
+            self.size = size
+            self.scale(self.size[0],self.size[1])
+        except:
+            print("[MISSING] missing the file path") 
+        super().__init__(position,size,rotation)
 
         
     def blit(self):
         """
         Draw the images on the screen\n
         """
-        e.screen.blit(self.image, (self.position[0], self.position[1]))
+        if self.position[0] >= -self.size[0] and self.position[1] >= -self.size[1]:
+            if self.position[0] <= e.screen_size[0] and self.position[1] <= e.screen_size[1]:
+                e.screen.blit(self.image, (self.position[0], self.position[1]))
 
         return super().blit()
 
