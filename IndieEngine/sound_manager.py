@@ -46,7 +46,7 @@ class MUSIC(GAMEOBJECT):
     def fadeout(self):
         mixer.music.fadeout()
 
-class SOUND():
+class SOUND(GAMEOBJECT):
     sounds = {}
     def add(self,name:str,path:str):
         """

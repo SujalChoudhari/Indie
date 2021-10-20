@@ -60,3 +60,6 @@ def move(object: pygame.Rect, movement):
             collision_type["top"] = True
 
     return object, collision_type
+
+
+   

@@ -1,6 +1,7 @@
 
 import pygame
-
+from pygame import font
+pygame.init()
 class FONT:
     """
     FONT\n
@@ -13,9 +14,12 @@ class FONT:
         :size (int): the size of the font\n
         :bakground(COLOUR): background colour \n
         """
+        if path is None:
+            path = "../Resources/font_big.ttf"
         self.path = path
         self.size = size
         self.font = pygame.font.Font(self.path, self.size)
 
-
+font_16 = pygame.font.Font("Resources/font_small.ttf", 10)
+font_8 = pygame.font.Font("Resources/font_small.ttf", 8)
 

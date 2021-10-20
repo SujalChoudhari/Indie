@@ -4,6 +4,7 @@ import pygame
 from .text import TEXT
 from .panel import PANEL
 from . import app  as e
+import IndieEngine
 
 class BUTTON(TEXT, PANEL):
     """
@@ -13,6 +14,7 @@ class BUTTON(TEXT, PANEL):
     ispressed = False
     ishovered = False
     def __init__(self, text: str, font: FONT, colour: COLOUR, background_colour: COLOUR):
+        self.isselected = False
         super().__init__(text, font, colour, background_colour)
 
     def blit(self) -> None:
@@ -39,11 +41,17 @@ class BUTTON(TEXT, PANEL):
         :mouse(x,y): Position of mouse\n
         """
         self.ispressed = False
-        self.ishovered = False
+         
         try:
             if self.rect.collidepoint((mouse)):
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.ispressed = True
                 self.ishovered = True
-        except:
+            else:
+                self.ishovered = False
+
+            if event.type == IndieEngine.inputs.EVENT.mouse_button_down and self.rect.collidepoint((mouse)):
+                self.ispressed = True
+                self.isselected = True
+            elif event.type == IndieEngine.inputs.EVENT.mouse_button_down and not self.rect.collidepoint((mouse)):
+                self.isselected = False
+        except AttributeError as e:
             pass
