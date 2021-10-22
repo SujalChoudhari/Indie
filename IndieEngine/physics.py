@@ -43,34 +43,34 @@ def move(object: pygame.Rect, movement):
     }
 
     # Check for horizontal movement
-    object.x += movement[0]
+    object.x += movement.x
     hit_list = collision_test(object)
 
     # if the object collided 
     for tile in hit_list:
 
         # if was moving right 
-        if movement[0] > 0:
+        if movement.x > 0:
             object.right = tile.left
             collision_type["right"] = True
 
         #if was moving left
-        elif movement[0] < 0:
+        elif movement.x < 0:
             object.left = tile.right
             collision_type["left"] = True
 
     #Check for vertical movement
-    object.y += movement[1]
+    object.y += movement.y
     hit_list = collision_test(object)
 
     #if collides
     for tile in hit_list:
         # if collided with floor
-        if movement[1] > 0:
+        if movement.y > 0:
             object.bottom = tile.top
             collision_type["bottom"] = True
         #if collided with ceil
-        elif movement[1] < 0:
+        elif movement.y < 0:
             object.top = tile.bottom
             collision_type["top"] = True
 

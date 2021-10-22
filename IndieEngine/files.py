@@ -63,8 +63,10 @@ class FILE():
         """
         with open(f"{self.name}.json", 'r') as f:
             data = json.load(f)
-
-        del data[key]
-        with open(f"{self.name}.json", 'w') as f:
-            json.dump(data, f,indent=4, sort_keys=True)
+        try:
+            del data[key]
+            with open(f"{self.name}.json", 'w') as f:
+                json.dump(data, f,indent=4, sort_keys=True)
+        except KeyError as e:
+            print(e)
 

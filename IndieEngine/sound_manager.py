@@ -47,7 +47,14 @@ class MUSIC(GAMEOBJECT):
         mixer.music.fadeout()
 
 class SOUND(GAMEOBJECT):
-    sounds = {}
+
+    def __init__(self,sounds={}) -> None:
+        """
+        Add sounds path and its name as a dict
+        """
+        self.sounds = sounds
+
+
     def add(self,name:str,path:str):
         """
         Add sound int the sounds library\n

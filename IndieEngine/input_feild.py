@@ -1,8 +1,8 @@
+from IndieEngine.font import FONT
 from IndieEngine.inputs import EVENT, KEY
-from IndieEngine.physics import QUAD, VECTOR
+from IndieEngine.physics import QUAD
 from .transform import TRANSFORM
 from .colour import COLOUR
-from .font import font_16
 from . import app  as e
 import pygame
 pygame.init()
@@ -16,7 +16,7 @@ class INPUTFEILD(TRANSFORM):
     COLOR_INACTIVE = COLOUR().make(0,0,0)
     COLOR_ACTIVE =COLOUR().make(20,80,80)
 
-    def __init__(self,rect:QUAD, text='',colour_inactive=COLOUR().make(0,0,0),colour_active=COLOUR().make(20,80,80)):
+    def __init__(self,rect:QUAD,font:FONT, text='',colour_inactive=COLOUR().make(0,0,0),colour_active=COLOUR().make(20,80,80)):
         self.position = rect.position
         self.size = rect.size
         self.rect = pygame.Rect(rect.x,rect.y,rect.w,rect.h)
@@ -25,9 +25,10 @@ class INPUTFEILD(TRANSFORM):
         self.COLOR_ACTIVE = colour_active
         self.text = text
         self.active = False
+        self.font = font
         self.save_status = True
         self.save()
-        self.txt_surface = font_16.render(self.text, True, COLOUR().make(150,150,150))
+        self.txt_surface = font.render(self.text, True, COLOUR().make(150,150,150))
 
     def controls(self, event):
         if event.type == EVENT.mouse_button_down:
@@ -50,7 +51,7 @@ class INPUTFEILD(TRANSFORM):
             else:
                 self.color = self.COLOR_INACTIVE
             # Re-render the text.
-            self.txt_surface = font_16.render(self.text, True, COLOUR().make(150,150,150))
+            self.txt_surface = self.font.render(self.text, True, COLOUR().make(150,150,150))
             
 
         if event.type == EVENT.key_down:
@@ -66,7 +67,7 @@ class INPUTFEILD(TRANSFORM):
                     self.save_status = False
                     self.text += event.unicode
                 # Re-render the text.
-                self.txt_surface = font_16.render(self.text, True, COLOUR().make(150,150,150))
+                self.txt_surface = self.font.render(self.text, True, COLOUR().make(150,150,150))
 
 
 

@@ -47,7 +47,7 @@ class TRANSFORM(GAMEOBJECT):
             return self.position
 
     def stretch(self,mode="fill",parent:QUAD=screen_size) -> QUAD:
-        if mode == "complete":
+        if mode == "fill":
             return QUAD(parent.x,parent.y,parent.width,parent.height)
         elif mode == "horizontal":
             return QUAD(parent.x,self.y,parent.width,self.height)

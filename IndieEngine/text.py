@@ -14,11 +14,13 @@ class TEXT(TRANSFORM):
         Create Ready to use texts\n
         \n
         Parameters:\n
+        :rect(Quad): The position and suggested dimentions.
         :text(str): The text you want to show\n
         :font(FONT): The font the text  should have\n
         :colour(COLOUR): The colour of the text\n
         """
         self.rect = rect
+        self.position = rect.position
         self.text = text
         self.font = font
         self.colour = colour
@@ -37,7 +39,7 @@ class TEXT(TRANSFORM):
         height = self.font.get_height()
         self.size = VECTOR(width,height)
         self.rect = pygame.Rect(self.position.x,self.position.y,self.size.x,self.size.y)
-        e.screen.blit(self.font, (self.position.x, self.position.y))
+        e.screen.blit(self.font, (self.rect.x, self.rect.y))
         
         
 

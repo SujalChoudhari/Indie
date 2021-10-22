@@ -1,23 +1,29 @@
 import pygame
+from .gameobject import GAMEOBJECT
 from . import app  as e
 from . import physics
-class TILEMAP():
+class TILEMAP(GAMEOBJECT):
     """
     Create custom tilemaps for levels
+
+    Tiles {} example
+    {
+    "1":image(IMAGE),
+    "2":image(IMAGE),
+    "3":image(IMAGE),
+    "4":image(IMAGE),
+    "5":image(IMAGE),
+    }
     """
-    tile_size = 16
-    map_location = ""
+
+    def __init__(self,tile_size=16,map_location = "",tiles={}) -> None:
+        
+        self.tile_size =tile_size
+        self.map_location = map_location
+        self.tiles = tiles
    
-    tiles = {}
     
-    # Tiles {} example
-    # {
-    # "1":image(IMAGE),
-    # "2":image(IMAGE),
-    # "3":image(IMAGE),
-    # "4":image(IMAGE),
-    # "5":image(IMAGE),
-    # }
+    
 
     blitable_rect_list = []
     game_map = []

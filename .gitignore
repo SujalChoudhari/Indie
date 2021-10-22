@@ -1,6 +1,6 @@
 build/
 dist/
-indiedev.egg-info/
+indie_engine.egg-info/
 __pycache__/
 tests/
 test.py

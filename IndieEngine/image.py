@@ -7,12 +7,13 @@ class IMAGE(TRANSFORM):
     """
     Add images on the screen\n
     """
-    def __init__(self,rect:QUAD,rotation,path) -> None:
+    def __init__(self,rect:QUAD,rotation,path=None) -> None:
         self.path = path
         super().__init__(rect,rotation)
         try:
             self.image = pygame.image.load(self.path).convert_alpha()
             self.scale(rect.width,rect.height)
+            self.rotate(rotation)
         except:
             print("[MISSING]: missing the file path")
 
@@ -39,6 +40,7 @@ class IMAGE(TRANSFORM):
         self.size.x = x
         self.size.y = y
         self.image = pygame.transform.scale(self.image,(self.size.x,self.size.y))
+       
 
     def rotate(self, angle:int):
         """

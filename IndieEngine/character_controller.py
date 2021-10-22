@@ -1,3 +1,4 @@
+from IndieEngine.inputs import KEY
 from . import physics
 import pygame
 from .image import IMAGE
@@ -7,17 +8,26 @@ class CHARACTER_CONTROLLER(IMAGE):
     """
     Object movement\n
     """
+    def __init__(self, rect:physics.QUAD, rotation, path, speed:int=10, up_key=KEY.w, down_key=KEY.s, 
+    left_key=KEY.a, right_key=KEY.d) -> None:
+        self.speed = speed
+        self.up_key = up_key
+        self.down_key = down_key
+        self.left_key = left_key
+        self.right_key = right_key
+        super().__init__(rect, rotation, path)
+
+        
+
+
     relative_movement = physics.VECTOR(0,0)
     moving_left = False
     moving_right = False
     moving_up = False
     moving_down = False
-    speed = 10
 
-    up_key = pygame.K_w
-    down_key = pygame.K_s
-    left_key = pygame.K_a
-    right_key = pygame.K_d
+
+    
 
     def blit(self):
         """

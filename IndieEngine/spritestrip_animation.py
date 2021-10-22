@@ -53,7 +53,7 @@ class SPRITESTRIP_ANIMATION(IMAGE):
         if self.f == 0:
             self.i += 1
             self.f = self.frames
-        return image
+        return image.image
 
     def __add__(self, ss):
         """

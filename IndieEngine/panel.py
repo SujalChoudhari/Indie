@@ -9,6 +9,12 @@ class PANEL(TRANSFORM):
     A UI panel/rectangle
     """
     def __init__(self, rect:QUAD, rotation, thick, colour) -> None:
+        """
+        :Parameters:
+        : rect(Quad)
+        : rotation - 0-360 in degrees
+        : thick(int) - thickness of panel(box),  0= filled, -1 = Not to display.
+        """
         super().__init__(rect=rect, rotation=rotation)
         self.thick = thick
         self.colour = colour

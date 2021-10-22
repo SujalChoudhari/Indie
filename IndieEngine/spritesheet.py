@@ -1,3 +1,4 @@
+from IndieEngine.physics import QUAD
 from .colour import COLOUR
 import pygame
 from .image import IMAGE
@@ -30,7 +31,7 @@ class SPRITESHEET(IMAGE):
         Returns:\n
         An individual image\n
         """
-        image_object = IMAGE()
+        image_object = IMAGE(QUAD(rectangle[0],rectangle[1],rectangle[2],rectangle[3]),0)
         rect = pygame.Rect(rectangle)
         image = pygame.Surface(rect.size).convert()
         image.blit(self.sheet, (0, 0), rect)
