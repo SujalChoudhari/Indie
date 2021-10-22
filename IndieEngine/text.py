@@ -1,3 +1,4 @@
+from IndieEngine.physics import QUAD, VECTOR
 from .colour import COLOUR
 from .transform import TRANSFORM
 from .font import FONT
@@ -8,7 +9,7 @@ class TEXT(TRANSFORM):
     Create Ready to use texts\n
     """
     rect = None
-    def __init__(self, text:str, font: FONT, colour:COLOUR,background_colour:COLOUR=None):
+    def __init__(self,rect:QUAD, text:str, font: FONT, colour:COLOUR,background_colour:COLOUR=None):
         """
         Create Ready to use texts\n
         \n
@@ -17,6 +18,7 @@ class TEXT(TRANSFORM):
         :font(FONT): The font the text  should have\n
         :colour(COLOUR): The colour of the text\n
         """
+        self.rect = rect
         self.text = text
         self.font = font
         self.colour = colour
@@ -30,11 +32,12 @@ class TEXT(TRANSFORM):
         """
         Draw the text on to the screen\n
         """
+        super().blit()
         width = self.font.get_width()
         height = self.font.get_height()
-        self.size = [width,height]
-        self.rect = pygame.Rect(self.position[0],self.position[1],self.size[0],self.size[1])
-        e.screen.blit(self.font, (self.position[0], self.position[1]))
+        self.size = VECTOR(width,height)
+        self.rect = pygame.Rect(self.position.x,self.position.y,self.size.x,self.size.y)
+        e.screen.blit(self.font, (self.position.x, self.position.y))
         
-        return super().blit()
+        
 

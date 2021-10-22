@@ -1,6 +1,4 @@
-
 import pygame
-from pygame import font
 pygame.init()
 class FONT:
     """

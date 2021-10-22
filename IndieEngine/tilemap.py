@@ -1,4 +1,3 @@
-from .image import IMAGE
 import pygame
 from . import app  as e
 from . import physics

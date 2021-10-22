@@ -1,4 +1,4 @@
-from . import colour, physics, app
+from . import physics
 import pygame
 from .image import IMAGE
 
@@ -7,7 +7,7 @@ class CHARACTER_CONTROLLER(IMAGE):
     """
     Object movement\n
     """
-    relative_movement = [0,0]
+    relative_movement = physics.VECTOR(0,0)
     moving_left = False
     moving_right = False
     moving_up = False
@@ -63,21 +63,21 @@ class CHARACTER_CONTROLLER(IMAGE):
                 self.moving_down = False
 
         if self.moving_up:
-            self.relative_movement[1] = -self.speed
+            self.relative_movement.y = -self.speed
         if self.moving_down:
-            self.relative_movement[1] = self.speed
+            self.relative_movement.y = self.speed
         if self.moving_left:
-            self.relative_movement[0] = -self.speed
+            self.relative_movement.x = -self.speed
         if self.moving_right:
-            self.relative_movement[0] = self.speed
+            self.relative_movement.x = self.speed
             
 
     def move(self):
         """Move the object with the help of relative position"""
 
         updated_location, collisions = physics.move(pygame.Rect(
-            self.position[0], self.position[1], self.size[0], self.size[1]), self.relative_movement)
+            self.position.x, self.position.y, self.size.x, self.size.y), self.relative_movement)
 
-        self.position[0] = updated_location.x
-        self.position[1] = updated_location.y
-        self.relative_movement = [0,0]
+        self.position.x = updated_location.x
+        self.position.y = updated_location.y
+        self.relative_movement = physics.VECTOR(0,0)

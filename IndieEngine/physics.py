@@ -1,7 +1,22 @@
 import pygame
 
-collidable_tile_rects = []
 
+class VECTOR:
+    def __init__(self,x,y) -> None:
+        self.x = x
+        self.y = y
+
+class QUAD:
+    def __init__(self,x,y,w,h) -> None:
+        self.x = x
+        self.y = y
+        self.width = w
+        self.height = h
+
+        self.position = VECTOR(x,y)
+        self.size = VECTOR(w,h)
+
+collidable_tile_rects = []
 
 def collision_test(object):
     """
@@ -62,4 +77,8 @@ def move(object: pygame.Rect, movement):
     return object, collision_type
 
 
-   
+def distance(obj1:VECTOR, obj2:VECTOR) -> VECTOR:
+    return VECTOR( obj2.x-obj1.x, obj2.y-obj1.y)
+
+def dot(obj1:VECTOR, obj2:VECTOR) -> int:
+    return int((obj1.x)(obj2.x)+(obj1.y)(obj2.y))

@@ -1,58 +1,47 @@
 # Imports
+from IndieEngine.physics import QUAD, VECTOR
 from . import colour
 import math
 import pygame
-import sys, threading
+import sys
 
 
 # Screen Constants
 background_colour = colour.COLOUR.White
-caption = "indiedev"
-
+caption = "Indie Engine"
 fps = 60
-screen_size = [900, 600]
+screen_size = VECTOR(900,600)
 scale_amount = 1
 icon_file = ""
 scalable = False
+
+
 window = None
 screen = None
 clock = pygame.time.Clock()
 pygame.font.init()
 font = pygame.font.Font("Resources/font_small.ttf",18)
  
- 
-def update_fps():
-	fps = str(int(clock.get_fps()))
-	fps_text = font.render(fps, 1, pygame.Color("coral"))
-	return fps_text
 
 def init():
     """
-    Initiate the indiedev Module
+    Initiate module/ window with given parameters(screen constants)
     """
     global window,screen
-    
     pygame.init()
-
-    window = pygame.display.set_mode((screen_size[0], screen_size[1]),pygame.RESIZABLE)
-
+    window = pygame.display.set_mode((screen_size.x, screen_size.y),pygame.RESIZABLE)
     screen = pygame.Surface(
-        (math.ceil(screen_size[0]/scale_amount), math.ceil(screen_size[1]/scale_amount)))
+        (math.ceil(screen_size.x/scale_amount), math.ceil(screen_size.y/scale_amount)))
 
 
 # Main RUN function
 def run(awake=None, update=None,draw=None, inputs=None) -> None:
+    """
+    Game loop
+    """
     global window, screen, screen_size
-    """
-    Create a new screen. \n
-    `Parameters:` \n
-    :awake(function name): this is called once before a screen loop starts \n
-    :update (function name): this takes a function and calls after refreshing the screen\n
-    :input(function name) : this is called before the update\n
-    \n
-    """
     pygame.display.set_caption(caption)  # Set the title of the scene
-    awake_thread = threading.Thread(target=awake)
+
 
     try:
         pygame.display.set_icon(pygame.image.load(icon_file))
@@ -60,9 +49,7 @@ def run(awake=None, update=None,draw=None, inputs=None) -> None:
         print("[MISSING] Ignoring the missing files, icon set to default")
 
     if awake:
-        awake_thread.start()
-
-    awake_thread.join()
+        awake()
 
     while 1:
         screen.fill(background_colour)
@@ -85,7 +72,7 @@ def run(awake=None, update=None,draw=None, inputs=None) -> None:
         if draw:
             draw()
 
-        screen.blit(update_fps(), (screen_size[0]-30,0))
+
         window.blit(pygame.transform.scale(screen, (screen.get_width(
         )*scale_amount, screen.get_height() * scale_amount)), (0, 0))
         #Strech the screen over the window for a pixelated look

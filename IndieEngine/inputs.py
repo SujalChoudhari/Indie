@@ -1,5 +1,9 @@
 import pygame
 class KEY:
+
+    """
+    All the usefull keyboard intrupts
+    """
     backspace = pygame.K_BACKSPACE           
     tab = pygame.K_TAB                 
     clear = pygame.K_CLEAR               
@@ -136,6 +140,9 @@ class KEY:
 
 
 class EVENT:
+    """
+    Pygame events are re-assigned
+    """
     quit_ = pygame.QUIT        
     key_down = pygame.KEYDOWN         
     key_up = pygame.KEYUP           

@@ -1,4 +1,5 @@
 from IndieEngine.inputs import EVENT, KEY
+from IndieEngine.physics import QUAD, VECTOR
 from .transform import TRANSFORM
 from .colour import COLOUR
 from .font import font_16
@@ -8,15 +9,17 @@ pygame.init()
 
 
 class INPUTFEILD(TRANSFORM):
+    """
+    Customisable Input feilds
+    """
     save_status = False
-
     COLOR_INACTIVE = COLOUR().make(0,0,0)
     COLOR_ACTIVE =COLOUR().make(20,80,80)
 
-    def __init__(self, x, y, w, h, text='',colour_inactive=COLOUR().make(0,0,0),colour_active=COLOUR().make(20,80,80)):
-        self.position = [x,y]
-        self.size = [w,h]
-        self.rect = pygame.Rect(x, y, w, h)
+    def __init__(self,rect:QUAD, text='',colour_inactive=COLOUR().make(0,0,0),colour_active=COLOUR().make(20,80,80)):
+        self.position = rect.position
+        self.size = rect.size
+        self.rect = pygame.Rect(rect.x,rect.y,rect.w,rect.h)
         self.color = colour_inactive
         self.COLOR_INACTIVE = colour_inactive
         self.COLOR_ACTIVE = colour_active
@@ -76,12 +79,12 @@ class INPUTFEILD(TRANSFORM):
         # Blit the rect.
         pygame.draw.rect(e.screen, self.color, self.rect, 0)
         # Blit the text.
-        self.rect = pygame.Rect(self.position[0],self.position[1],self.size[0],self.size[1])
+        self.rect = pygame.Rect(self.position.x,self.position.y,self.size.x,self.size.y)
         e.screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+10))
         
     true_value = None
     def save(self):
         self.true_value = self.text
-        self.text = f"{self.text[:int(self.size[0]/10)]}..."
+        self.text = f"{self.text[:int(self.size.x/10)]}..."
         
 

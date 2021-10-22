@@ -1,6 +1,3 @@
-from typing import List
-
-
 class GAMEOBJECT:
     """
     GAMEOBJECT\n
@@ -8,3 +5,6 @@ class GAMEOBJECT:
     """
     def blit(self):
         pass
+
+    parent = None
+    

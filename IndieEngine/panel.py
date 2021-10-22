@@ -1,6 +1,6 @@
-from .colour import COLOUR
 import pygame
 from .transform import TRANSFORM
+from .physics import QUAD
 from . import app as e
 
 
@@ -8,23 +8,27 @@ class PANEL(TRANSFORM):
     """
     A UI panel/rectangle
     """
-    rect = None
-    thick = -1
-    def __init__(self, position, size, rotation,thick, colour) -> None:
+    def __init__(self, rect:QUAD, rotation, thick, colour) -> None:
+        super().__init__(rect=rect, rotation=rotation)
         self.thick = thick
         self.colour = colour
-        self.size = size
-        super().__init__(position=position, size=size, rotation=rotation)
+        self.size = rect.size
+        self.position = rect.position
+        self.rect = pygame.Rect(self.x,self.y,self.width,self.height)
+        
 
 
     def blit(self):
         """
         Draw the rectangle on the screen
         """
-        rect = pygame.Rect(
-            self.position[0], self.position[1], self.size[0], self.size[1])
-        self.rect = rect
-        pygame.draw.rect(e.screen, self.colour, rect, self.thick)
+        self.rect = pygame.Rect(
+            self.position.x,
+            self.position.y,
+            self.size.x,
+            self.size.y)
+
+        pygame.draw.rect(e.screen, self.colour, self.rect, self.thick)
         return super().blit()
 
     def collidepoint(self,points:tuple=()) -> bool:

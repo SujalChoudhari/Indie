@@ -23,8 +23,11 @@ class BUTTON(TEXT, PANEL):
         """
         width = self.font.get_width()
         height = self.font.get_height()
-        b_rect = (self.position[0]-self.padding*width/2, self.position[1]-self.padding*height/2,
-                  width+self.padding*width, height+self.padding*height)
+        b_rect = (self.position.x-self.padding*width/2,
+                    self.position.y-self.padding*height/2,
+                    width+self.padding*width,
+                    height+self.padding*height)
+
         self.rect = pygame.Rect((b_rect))
         self.size = [b_rect[2],b_rect[3]]
         pygame.draw.rect(e.screen, self.colour, 

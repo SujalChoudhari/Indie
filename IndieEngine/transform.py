@@ -1,68 +1,60 @@
+from IndieEngine.physics import QUAD, VECTOR
 from .gameobject import GAMEOBJECT
 
 from .app import *
 
 
 class TRANSFORM(GAMEOBJECT):
-    """
-    TRANSFORM\n
-    This holds the physical location of a gameObject\n
-    position: [x,y]\n
-    size: [x,y]\n
-    rotation:[n:degrees]\n
-    """
-    position = [0,0]
-    size = [0,0]
-    rotation = 0
 
-    def __init__(self, position=[0, 0], size=[10, 10], rotation=0) -> None:
-        self.position = position
-        self.size = size
+    def __init__(self, rect:QUAD, rotation=0) -> None:
+        """
+        Transform class allows access to position, size and rotation of the object
+        """
+        self.x = rect.x
+        self.y = rect.y
+        self.width = rect.width
+        self.height = rect.height
+
+        self.position = rect.position
+        self.size = rect.size
+
         self.rotation = rotation
         super().__init__()
 
     def blit(self):
         return super().blit()
 
-    def rotate(self):
-        pass
-
-    def scale(self):
-        pass
-
-    def move(self,x,y):
-        self.position[0] =x
-        self.position[1] =y
-
-    def align(self, position: str = "x", type: str = "center",parent_dim=screen_size):
-        """
-        Align a transform object\n
-        :position:(str) This can be a "x" or a "y", the axis of which the align is to be used.\n
-        :type:(str) this have values of "center", "start", "end". \n
-                x, start means left,\n
-                y, start means top,\n
-                y,end means bottom,\n
-                x,end means right\n
-        """
-        self.blit()
-        
-        if position == "x":
-            i = 0
-        elif position == "y":
-            i = 1
+    def align(self,parent:QUAD, anchor="mid-center") -> VECTOR:
+        if anchor == "top-left":
+            return parent.position
+        elif anchor == "top-center":
+            return VECTOR(parent.width/2-self.width/2,parent.y)
+        elif anchor == "top-right":
+            return VECTOR(parent.width-self.width,parent.y)
+        elif anchor == "mid-left":
+            return VECTOR(parent.x,parent.height/2-self.height/2)
+        elif anchor == "mid-center":
+            return VECTOR(parent.width/2 - self.width/2, parent.height/2 - self.height/2)
+        elif anchor == "mid-right":
+            return VECTOR(parent.width - self.width,parent.height/2 - self.height/2)
+        elif anchor == "bottom-left":
+            return VECTOR(parent.x,parent.height-self.height)
+        elif anchor == "bottom-center":
+            return VECTOR(parent.width/2-self.width/2,parent.height-self.height)
+        elif anchor == "bottom-right":
+            return VECTOR(parent.width-self.width,parent.width-self.width)
         else:
-            print("[WRONG ARGUMENT] position argument is wrong")
+            return self.position
 
-        try:
-            if type == "center":
-                self.position[i] = (parent_dim[i]/2) - (self.size[i]/2)
-            elif type == "start":
-                self.position[i] += self.position[i]/2
-            elif type == "end":
-                self.position[i] = parent_dim[i] - self.size[i]
+    def stretch(self,mode="fill",parent:QUAD=screen_size) -> QUAD:
+        if mode == "complete":
+            return QUAD(parent.x,parent.y,parent.width,parent.height)
+        elif mode == "horizontal":
+            return QUAD(parent.x,self.y,parent.width,self.height)
+        elif mode == "vertical":
+            return QUAD(self.x,parent.y,self.width,parent.height)
 
-        except Exception as e:
-            print(e)
-            pass
+
+
 
       
